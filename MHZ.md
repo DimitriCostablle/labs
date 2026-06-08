@@ -64,6 +64,7 @@ Análise de Arquivos Expostos
 O arquivo antes identificado foi acessado com êxito diretamente pelo navegador, onde continha anotações de outros arquivos (remb.txt e remb2.txt). Acessando “remb.txt” encontramos dados sensíveis de login.
 
 Exploração
+
  <img width="538" height="310" alt="image" src="https://github.com/user-attachments/assets/ab115443-5ed8-4aa9-b17e-56d400f7a4dc" />
 <img width="569" height="138" alt="image" src="https://github.com/user-attachments/assets/ef941cd7-ab0a-4777-b0ee-647785ca74dc" />
 
