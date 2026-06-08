@@ -44,6 +44,7 @@ Reconhecimento de aplicação web e Software
 Ferramenta whatweb para fazer o reconhecimento web. Versão antiga do serviço apache descoberta.
 
 Enumeração web
+
  <img width="539" height="330" alt="image" src="https://github.com/user-attachments/assets/f904d203-8d32-4b6f-a41a-6f65c3197d24" />
 <img width="555" height="295" alt="image" src="https://github.com/user-attachments/assets/48d4f5c3-f3e9-44c8-bdd0-d09748739275" />
 
