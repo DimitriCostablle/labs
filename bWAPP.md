@@ -55,10 +55,6 @@ Ao analisar o arquivo phpi.php, verificou-se que o parâmetro message processava
 
 •	Payload de Teste: http://192.168.56.103/bwapp/phpi.php?message=system("whoami");
  
- <img width="786" height="328" alt="image" src="https://github.com/user-attachments/assets/b1a058ed-dd69-4c24-ab5a-d56c6100ec52" />
-<img width="842" height="59" alt="image" src="https://github.com/user-attachments/assets/320551f4-c458-4b16-a13b-931b7d4d85c6" />
-
-
  
  
 <img width="717" height="259" alt="image" src="https://github.com/user-attachments/assets/5fcb687a-b1cf-4181-9924-849a93c14b6e" />
