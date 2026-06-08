@@ -5,12 +5,12 @@ Repositório destinado à documentação de práticas e testes de penetração r
 ## Relatórios Disponíveis:
 * [Pentest: Máquina DEATHSTAR](https://github.com/DimitriCostablle/labs/blob/main/DEATHSTAR.md)
 
-* [Pentest: Máquina OWASP](https://github.com/DimitriCostablle/labs/blob/main/DVWA.md)
+* [Pentest: Máquina OWASP-DVWA](https://github.com/DimitriCostablle/labs/blob/main/DVWA.md)
 
-* (https://github.com/DimitriCostablle/labs/blob/main/MHZ.md).
+* [Pentest: Máquina MHZ](https://github.com/DimitriCostablle/labs/blob/main/MHZ.md).
 
-* (https://github.com/DimitriCostablle/labs/blob/main/Thales.md).
+* [Pentest: Máquina Thales](https://github.com/DimitriCostablle/labs/blob/main/Thales.md).
 
-* (https://github.com/DimitriCostablle/labs/blob/main/YOTF.md).
+* [Pentest: Máquina YOTF](https://github.com/DimitriCostablle/labs/blob/main/YOTF.md).
 
-* (https://github.com/DimitriCostablle/labs/blob/main/bWAPP.md).
+* [Pentest: Máquina OWASP-bWAPP](https://github.com/DimitriCostablle/labs/blob/main/bWAPP.md).
