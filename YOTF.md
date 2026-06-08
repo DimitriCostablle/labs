@@ -14,7 +14,7 @@ A análise revelou a existência de dois usuários principais, fox e rascal, al�
 
 
 
-Exploração de Vulnerabilidades Web
+##Exploração de Vulnerabilidades Web
 Ao acessar a aplicação web, identificou-se um sistema de busca de arquivos. Devido à necessidade de autenticação, foi realizado um ataque de dicionário utilizando a ferramenta Hydra contra o formulário de login, utilizando a lista de senhas rockyou.txt.
 Comando utilizado: hydra -l rascal -P /usr/share/wordlists/rockyou.txt 10.67.138.207 http-get /
  
@@ -39,14 +39,14 @@ Para consolidar o acesso, foi executado um payload de Reverse Shell em PHP, redi
 
 
 
-Enumeração Local e Pós-Exploração com LinPeas
+##Enumeração Local e Pós-Exploração com LinPeas
 Imediatamente após o acesso inicial como www-data, foi necessário compreender as permissões internas do sistema. Para isso, transferiu-se e executou-se o script LinPeas (Linux Privilege Escalation Awesome Script).
  
  <img width="623" height="159" alt="image" src="https://github.com/user-attachments/assets/33907fd6-e200-4489-9533-58349b0e5ddb" />
 <img width="613" height="186" alt="image" src="https://github.com/user-attachments/assets/939aa38f-3af3-41ab-a93e-3af9ed0bf8cd" />
 
 
-Movimentação Lateral e Pivoting
+##Movimentação Lateral e Pivoting
 Uma vez dentro do sistema, a fase de pós-exploração revelou arquivos de configuração e hashes de senhas no diretório /var/www/files. No entanto, o serviço SSH estava configurado para aceitar conexões apenas localmente (127.0.0.1), impedindo o acesso direto externo.
 Para contornar essa restrição, utilizou-se a técnica de Local Port Forwarding com a ferramenta socat, criando um túnel que mapeou a porta 22 (SSH) da vítima para a porta 1234 da máquina atacante.
  
@@ -60,7 +60,7 @@ Com o túnel estabelecido, foi realizado um novo ataque de força bruta via SSH 
 <img width="805" height="97" alt="image" src="https://github.com/user-attachments/assets/7ed39caf-9b2c-447e-9281-6209e23235d2" />
 
 
-Escalação de Privilégios para Root
+##Escalação de Privilégios para Root
 O objetivo final do teste era a obtenção de privilégios administrativos. O script de enumeração linpeas.sh foi carregado para a máquina para identificar vetores de escalação.
 
 <img width="342" height="64" alt="image" src="https://github.com/user-attachments/assets/8f5a089d-b558-43c1-b643-af38afc9e8e5" />
@@ -77,6 +77,6 @@ Comandos utilizados: echo "/bin/bash" > /tmp/poweroff chmod +x /tmp/poweroff exp
  
 Acho que a flag não está aqui...
 
-5. Conclusão
+##Conclusão
 O sucesso do teste demonstrou que falhas simples de configuração, como a falta de caminhos absolutos em comandos de sistema e a ausência de sanitização em formulários web, podem levar ao comprometimento total de um servidor Linux. Recomenda-se a atualização das políticas de privilégios e o saneamento rigoroso de entradas de usuário na camada de aplicação.
 <img width="567" height="189" alt="flag" src="https://github.com/user-attachments/assets/16501be4-7c92-4026-ac7f-6aeae297ece0" />
