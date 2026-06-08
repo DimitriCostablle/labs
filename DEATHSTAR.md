@@ -130,20 +130,17 @@ O conteúdo da página foi salvo em um arquivo
 
 Este arquivo foi utilizado como wordlist para um ataque de força bruta.
  
-<img width="886" height="127" alt="image" src="https://github.com/user-attachments/assets/52e556c5-9341-4c57-94a8-eec7b054fd0d" />
-
-
 Ataque de Força Bruta com Hydra
 Foi utilizado o Hydra para testar as possíveis senhas do usuário
-
-<img width="886" height="217" alt="image" src="https://github.com/user-attachments/assets/d353c833-9050-4dd0-a12f-0eb37492995d" />
-
  
 Comando utilizado:
-hydra -l darth -P senha_d@.txt 192.168.56.202 http-post-form
+
+hydra -l darth -P senha_.txt 192.168.56.202 http-post-form
+
 Resultado obtido:
 
-<img width="855" height="473" alt="image" src="https://github.com/user-attachments/assets/51e07194-2a42-4cc2-8987-0104a37cec11" />
+<img width="567" height="221" alt="1" src="https://github.com/user-attachments/assets/6d097e81-32f9-4b43-8bb3-012406f292cb" />
+
 
 
 Após autenticação bem-sucedida, foi possível acessar a página
@@ -171,13 +168,13 @@ crunch 7 7 0123456789 -o senhas_kenobi.txt
 
 
 
-Ataque de Força Bruta no Usuário K@
+Ataque de Força Bruta no Usuário user1
 
 O arquivo gerado foi utilizado em um novo ataque com Hydra.
 
 Comando utilizado:
 
-hydra -l k@ -P senhas_k@.txt 192.168.56.202 http-post-form
+hydra -l user1 -P senhas_1.txt 192.168.56.202 http-post-form
 
 <img width="886" height="345" alt="image" src="https://github.com/user-attachments/assets/c6af69bc-232c-479a-86c8-06dc24cd9841" />
 
