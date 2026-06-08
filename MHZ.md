@@ -22,10 +22,13 @@ Ferramentas e serviços utilizados: netdiscover, nmap,  dirb, whatweb, feroxbust
 
 
 Varredura de rede
- 
+ <img width="903" height="252" alt="image" src="https://github.com/user-attachments/assets/fc24377d-be61-445e-b6be-2d0138256f3d" />
+
 Foi utilizada a ferramenta Netdiscover para varredura de rede local, identificando o ip alvo com sucesso.
 
- 
+ <img width="886" height="213" alt="image" src="https://github.com/user-attachments/assets/41cf5447-4f19-4e7b-b8d1-2d4113ffb2b4" />
+<img width="886" height="285" alt="image" src="https://github.com/user-attachments/assets/47c01e40-9ce3-46a5-b869-083019184420" />
+
  
 Utilizada a ferramenta Nmap para descobrir portas abertas e versão do sistema. Porta 22 (ssh) e porta 80 (http) descobertas, sistema desatualizado (Linux 5.4).
 
@@ -36,11 +39,14 @@ Utilizada a ferramenta Nmap para descobrir portas abertas e versão do sistema. 
 
 
 Reconhecimento de aplicação web e Software 
- 
+ <img width="886" height="64" alt="image" src="https://github.com/user-attachments/assets/e1cc15a0-2312-4578-85b9-3cfde40de306" />
+
 Ferramenta whatweb para fazer o reconhecimento web. Versão antiga do serviço apache descoberta.
 
 Enumeração web
- 
+ <img width="539" height="330" alt="image" src="https://github.com/user-attachments/assets/f904d203-8d32-4b6f-a41a-6f65c3197d24" />
+<img width="555" height="295" alt="image" src="https://github.com/user-attachments/assets/48d4f5c3-f3e9-44c8-bdd0-d09748739275" />
+
  
 Foram utilizadas ferramentas de descoberta de diretório (feroxbuster, dirb) para identificar arquivos acessíveis publicamente. Arquivo “notes.txt” encontrado.
 
@@ -51,12 +57,16 @@ Foram utilizadas ferramentas de descoberta de diretório (feroxbuster, dirb) par
 
 
 Análise de Arquivos Expostos
- 
+ <img width="886" height="253" alt="image" src="https://github.com/user-attachments/assets/d2c8cfab-75cd-4c38-87b2-e4be48eb9b7a" />
+<img width="759" height="172" alt="image" src="https://github.com/user-attachments/assets/07849fc7-fb29-419f-9268-e2fdf13a89cf" />
+
  
 O arquivo antes identificado foi acessado com êxito diretamente pelo navegador, onde continha anotações de outros arquivos (remb.txt e remb2.txt). Acessando “remb.txt” encontramos dados sensíveis de login.
 
 Exploração
- 
+ <img width="538" height="310" alt="image" src="https://github.com/user-attachments/assets/ab115443-5ed8-4aa9-b17e-56d400f7a4dc" />
+<img width="569" height="138" alt="image" src="https://github.com/user-attachments/assets/ef941cd7-ab0a-4777-b0ee-647785ca74dc" />
+
  
 
 Com as credenciais obtidas, foi realizado acesso remoto via SSH. Obtendo acesso com sucesso, obtenção do shell interativo o controle do sistema foi comprometido.
