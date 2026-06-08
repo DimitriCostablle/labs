@@ -97,15 +97,8 @@ Acessando este diretório, foi encontrada uma página de login solicitando usuá
 
 Análise de Código Fonte
 
-Durante a inspeção do código fonte da página, foi encontrada a seguinte anotação:
+Durante a inspeção do código fonte da página, foram encontrados dados que indicavam que a senha do usuário poderia ser obtida gerando o hash MD5 da página 
 
-User = a@
-Senha = hash MD5 do arquivo x.pdf
-
-<img width="570" height="406" alt="image" src="https://github.com/user-attachments/assets/6d082328-8edb-4199-87ba-fb03d7a35a55" />
-
- 
-Isso indicava que a senha do usuário a@ poderia ser obtida gerando o hash MD5 do arquivo x.pdf
 Obtenção do Hash MD5
 O arquivo foi baixado utilizando o comando:
 wget <URL do arquivo Star_Wars.pdf>
@@ -113,13 +106,9 @@ wget <URL do arquivo Star_Wars.pdf>
 <img width="886" height="356" alt="image" src="https://github.com/user-attachments/assets/4219735c-4b06-45f6-9d9d-43bdebfd209c" />
 
  
-Após o download, foi gerado o hash MD5 do arquivo:
-md5sum x.pdf
-
-<img width="631" height="105" alt="image" src="https://github.com/user-attachments/assets/c44568f6-dce5-4201-a16d-8a947612bf98" />
-
+Após o download, foi gerado o hash MD5 do arquivo
  
-O valor gerado foi utilizado como senha do usuário a@, permitindo acesso à aplicação web.
+O valor gerado foi utilizado como senha do usuário, permitindo acesso à aplicação web.
  
 <img width="886" height="525" alt="image" src="https://github.com/user-attachments/assets/4efc70cb-2b1b-488b-bc57-9235d8a20adf" />
 
@@ -128,16 +117,11 @@ Nova Informação Obtida
 
 Após o login bem-sucedido, foi exibida uma página com conteúdo sobre Star Wars.
 
-Durante a análise do código fonte, foi encontrada a seguinte mensagem:
-
-Remember: deixei a senha de d@ para logar em r/
-na página e%.html.
- 
-<img width="886" height="108" alt="image" src="https://github.com/user-attachments/assets/7ba5f86c-7f48-459e-bbe1-39d16741bf22" />
+Durante a análise do código fonte, foi encontrada uma mensagem que revelava senhas de acesso
 
 
 Descoberta da Senha do Usuário
-A página e%.html foi acessada.
+A página estreladamorte2023.html foi acessada.
 
 <img width="886" height="428" alt="image" src="https://github.com/user-attachments/assets/0d4cca6d-05ee-4bd7-beef-cf20ceadb360" />
 
@@ -171,11 +155,6 @@ Descoberta de Novo Usuário
 Na análise do código fonte da página, foi encontrada a mensagem:
 
 <img width="886" height="206" alt="image" src="https://github.com/user-attachments/assets/7b20bcf6-cd0f-408b-9f67-1e6dcacc0bf6" />
-
- 
-Login M%:
-Usuário: k@
-Senha: contém x dígitos
 
 Geração de Wordlist Numérica
 
