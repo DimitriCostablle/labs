@@ -71,7 +71,7 @@ Foram utilizadas ferramentas de descoberta de diretório (feroxbuster, dirb) par
 
 #Análise de Arquivos Expostos
  <img width="886" height="253" alt="image" src="https://github.com/user-attachments/assets/d2c8cfab-75cd-4c38-87b2-e4be48eb9b7a" />
-<img width="759" height="172" alt="image" src="https://github.com/user-attachments/assets/07849fc7-fb29-419f-9268-e2fdf13a89cf" />
+
 
  
 O arquivo antes identificado foi acessado com êxito diretamente pelo navegador, onde continha anotações de outros arquivos (remb.txt e remb2.txt). Acessando “remb.txt” encontramos dados sensíveis de login.
