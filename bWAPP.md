@@ -1,11 +1,11 @@
-#RELATÓRIO DE TESTE DE INVASÃO (PENTEST) – bWAPP#
+#RELATÓRIO DE TESTE DE INVASÃO (PENTEST) – bWAPP
 
 Alvo: 192.168.56.103 (VM Vulnerable Web) Atacante: 192.168.56.101 (Kali Linux) Data: 19 de Março de 2026
 
 ##RESUMO EXECUTIVO
 Este documento detalha o teste de invasão realizado na aplicação bWAPP. Foi identificada uma vulnerabilidade crítica de PHP Code Injection no componente phpi.php. A falha permite a execução remota de código (RCE), possibilitando que um atacante obtenha controle total do servidor web com os privilégios do usuário www-data.
 
- METODOLOGIA
+##METODOLOGIA
 O teste seguiu as fases padrão de um Pentest profissional:
 1.	Reconhecimento e Varredura: Descoberta de ativos e serviços.
 2.	Enumeração: Mapeamento de diretórios e arquivos da aplicação.
@@ -15,7 +15,7 @@ O teste seguiu as fases padrão de um Pentest profissional:
 
 
 
-DESENVOLVIMENTO TÉCNICO
+##DESENVOLVIMENTO TÉCNICO
 Reconhecimento e Varredura de Rede
 A primeira etapa consistiu em localizar o alvo na rede local e identificar portas abertas.
 •	Comando Netdiscover: netdiscover -r 192.168.56.0/24
@@ -25,7 +25,7 @@ A primeira etapa consistiu em localizar o alvo na rede local e identificar porta
 <img width="367" height="214" alt="image" src="https://github.com/user-attachments/assets/6999c55f-5c20-44a2-83c6-c57db3a4b8b2" />
 
 
-Enumeração Web
+##Enumeração Web
 Utilizou-se uma ferramenta de fuzzing para encontrar diretórios ocultos na aplicação.
 •	Comando Feroxbuster: feroxbuster -u http://192.168.56.103 -w /usr/share/wordlists/dirb/common.txt
 
@@ -36,7 +36,7 @@ Utilizou-se uma ferramenta de fuzzing para encontrar diretórios ocultos na apli
 
 
 
-Identificação da Vulnerabilidade (PHP Injection)
+##Identificação da Vulnerabilidade (PHP Injection)
 Ao analisar o arquivo phpi.php, verificou-se que o parâmetro message processava entradas do usuário através da função vulnerável eval(). Inserir uma aspa simples (') causou um erro de sintaxe, confirmando a injeção.
 •	Payload de Teste: http://192.168.56.103/bwapp/phpi.php?message=system("whoami");
  
@@ -54,7 +54,7 @@ Ao analisar o arquivo phpi.php, verificou-se que o parâmetro message processava
 
 
 
-Exploração e Ganho de Acesso (Reverse Shell)
+##Exploração e Ganho de Acesso (Reverse Shell)
 Para transformar a execução de comandos em um terminal interativo, foi configurado um Reverse Shell utilizando a técnica de mkfifo.
 Passo 1: Preparação do Receptor (Kali) No terminal do atacante, abriu-se uma porta para escuta: nc -nvlp 4444
 
@@ -68,13 +68,13 @@ Passo 2: Criação e Codificação do Payload Utilizou-se o site RevShells para 
 <img width="886" height="80" alt="image" src="https://github.com/user-attachments/assets/a730c0ec-2f27-43cd-a8c9-53aa58910702" />
 
 
-Encode:
+##Encode:
  
  <img width="475" height="109" alt="image" src="https://github.com/user-attachments/assets/ab83d836-cfee-4918-92aa-3b60fc0a886b" />
 <img width="886" height="127" alt="image" src="https://github.com/user-attachments/assets/bc23d37e-de7a-4c71-8327-5e9eed21e1c9" />
 
 
-Prova de Conceito (PoC)
+##Prova de Conceito (PoC)
 Ao submeter o payload encodado via URL, o servidor bWAPP conectou-se de volta ao Kali Linux, entregando um shell interativo.
 •	Confirmação: Execução dos comandos id e hostname dentro do servidor invadido.
 
@@ -87,7 +87,7 @@ Ao submeter o payload encodado via URL, o servidor bWAPP conectou-se de volta ao
 
 
 
-CONCLUSÃO E MITIGAÇÃO
+##CONCLUSÃO E MITIGAÇÃO
 A vulnerabilidade encontrada é de severidade Crítica. O uso de funções que executam strings como código (como eval(), exec(), system()) deve ser evitado sempre que possível.
 Recomendações de Segurança:
 1.	Remover funções de execução: Substituir a lógica de eval() por estruturas de controle nativas (como switch/case).
