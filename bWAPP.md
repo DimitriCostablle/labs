@@ -1,8 +1,8 @@
-RELATÓRIO DE TESTE DE INVASÃO (PENTEST) – bWAPP
+#RELATÓRIO DE TESTE DE INVASÃO (PENTEST) – bWAPP
 
 Alvo: 192.168.56.103 (VM Vulnerable Web) Atacante: 192.168.56.101 (Kali Linux) Data: 19 de Março de 2026
 
-RESUMO EXECUTIVO
+##RESUMO EXECUTIVO
 Este documento detalha o teste de invasão realizado na aplicação bWAPP. Foi identificada uma vulnerabilidade crítica de PHP Code Injection no componente phpi.php. A falha permite a execução remota de código (RCE), possibilitando que um atacante obtenha controle total do servidor web com os privilégios do usuário www-data.
 
  METODOLOGIA
