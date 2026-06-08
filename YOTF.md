@@ -19,7 +19,8 @@ Ao acessar a aplicação web, identificou-se um sistema de busca de arquivos. De
 Comando utilizado: hydra -l rascal -P /usr/share/wordlists/rockyou.txt 10.67.138.207 http-get /
  
 <img width="709" height="95" alt="image" src="https://github.com/user-attachments/assets/a46ab27f-2c0d-4725-bd0d-5a643db6a533" />
-<img width="714" height="106" alt="image" src="https://github.com/user-attachments/assets/91667d2e-7f7c-4085-8332-55bef31c1726" />
+<img width="456" height="68" alt="rhiah" src="https://github.com/user-attachments/assets/98433164-acf1-4acc-a31c-51bb043368ad" />
+
 
  
 Com a credencial obtida (rascal:rhianna), foi possível acessar o painel de busca. Através da interceptação de requisições com o Burp Suite, constatou-se que o parâmetro de pesquisa era vulnerável a Injeção de Comandos de Sistema (OS Command Injection). Ao inserir caracteres de controle (como ; ou &&), o servidor permitiu a execução de comandos arbitrários.
@@ -54,10 +55,11 @@ Para contornar essa restrição, utilizou-se a técnica de Local Port Forwarding
 <img width="655" height="209" alt="image" src="https://github.com/user-attachments/assets/dc82aa11-02ec-49a6-8f7f-b8dd991d2142" />
 
  
-Com o túnel estabelecido, foi realizado um novo ataque de força bruta via SSH através da porta redirecionada, permitindo o acesso ao usuário fox com a senha mommy1.
+Com o túnel estabelecido, foi realizado um novo ataque de força bruta via SSH através da porta redirecionada, permitindo o acesso ao usuário fox.
  
  <img width="530" height="55" alt="image" src="https://github.com/user-attachments/assets/6c994e1c-aad7-4e54-99e0-5fa006851e64" />
-<img width="805" height="97" alt="image" src="https://github.com/user-attachments/assets/7ed39caf-9b2c-447e-9281-6209e23235d2" />
+<img width="515" height="61" alt="fox" src="https://github.com/user-attachments/assets/e1f047a6-ad4d-4e49-b72c-c558d64ea952" />
+
 
 
 ##Escalação de Privilégios para Root
