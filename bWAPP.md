@@ -1,31 +1,44 @@
 #RELATÓRIO DE TESTE DE INVASÃO (PENTEST) – bWAPP
 
+
 Alvo: 192.168.56.103 (VM Vulnerable Web) Atacante: 192.168.56.101 (Kali Linux) Data: 19 de Março de 2026
 
+
 ##RESUMO EXECUTIVO
+
 Este documento detalha o teste de invasão realizado na aplicação bWAPP. Foi identificada uma vulnerabilidade crítica de PHP Code Injection no componente phpi.php. A falha permite a execução remota de código (RCE), possibilitando que um atacante obtenha controle total do servidor web com os privilégios do usuário www-data.
 
+
 ##METODOLOGIA
+
 O teste seguiu as fases padrão de um Pentest profissional:
+
 1.	Reconhecimento e Varredura: Descoberta de ativos e serviços.
-2.	Enumeração: Mapeamento de diretórios e arquivos da aplicação.
-3.	Análise e Exploração: Identificação e exploração da falha de injeção.
-4.	Pós-Exploração: Ganho de acesso interativo (Reverse Shell).
-
-
+2.	
+3.	Enumeração: Mapeamento de diretórios e arquivos da aplicação.
+4.	
+5.	Análise e Exploração: Identificação e exploração da falha de injeção.
+6.	
+7.	Pós-Exploração: Ganho de acesso interativo (Reverse Shell).
 
 
 ##DESENVOLVIMENTO TÉCNICO
+
 Reconhecimento e Varredura de Rede
+
 A primeira etapa consistiu em localizar o alvo na rede local e identificar portas abertas.
+
 •	Comando Netdiscover: netdiscover -r 192.168.56.0/24
+
 •	Comando Nmap: nmap -v -n -sS -Pn --open -p- 192.168.56.103
+
  
  <img width="886" height="230" alt="image" src="https://github.com/user-attachments/assets/ed810857-fc64-47cb-a524-0cf523ea1d67" />
 <img width="367" height="214" alt="image" src="https://github.com/user-attachments/assets/6999c55f-5c20-44a2-83c6-c57db3a4b8b2" />
 
 
 ##Enumeração Web
+
 Utilizou-se uma ferramenta de fuzzing para encontrar diretórios ocultos na aplicação.
 •	Comando Feroxbuster: feroxbuster -u http://192.168.56.103 -w /usr/share/wordlists/dirb/common.txt
 
@@ -88,9 +101,14 @@ Ao submeter o payload encodado via URL, o servidor bWAPP conectou-se de volta ao
 
 
 ##CONCLUSÃO E MITIGAÇÃO
+
 A vulnerabilidade encontrada é de severidade Crítica. O uso de funções que executam strings como código (como eval(), exec(), system()) deve ser evitado sempre que possível.
+
 Recomendações de Segurança:
+
 1.	Remover funções de execução: Substituir a lógica de eval() por estruturas de controle nativas (como switch/case).
+
 2.	Sanitização de Input: Implementar filtros rigorosos para impedir que caracteres de sistema operacional sejam processados.
+
 3.	Princípio do Menor Privilégio: Garantir que o serviço web não rode com permissões de administrador, limitando o impacto em caso de invasão.
 
