@@ -40,6 +40,7 @@ Comando utilizado:
 
 
 ##netdiscover	
+
  <img width="886" height="164" alt="image" src="https://github.com/user-attachments/assets/8065f9cf-007b-4029-997e-45afcb4c85a6" />
 
 A ferramenta permitiu identificar o endereço IP do servidor alvo:
