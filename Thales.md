@@ -6,8 +6,11 @@ Durante o teste de intrusão foi identificado um serviço web vulnerável. A exp
 
 ##Tabela de Vulnerabilidades
 Vulnerabilidade	Severidade	Vetor de Ataque	Status
+
 Execução Remota de Código (RCE)	Crítica (9.8)	Upload de WAR via Tomcat Manager	Explorada
+
 Credenciais Fracas/Padrão	Alta (8.1)	Ataque de Dicionário (Brute Force)	Explorada
+
 Exposição de Painel Administrativo	Média (5.3)	Reconhecimento Web / Feroxbuster	Identificada
 
 
